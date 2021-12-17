@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+    <title>Fidenz | Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="scripts.js"></script>
+    <scrpt type = "text/javacsript" src="cities.json"></scrpt>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- INCLUDING JQUERY-->
+    <script src=
+"https://code.jquery.com/jquery-3.5.1.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  
+    <!-- CSS FOR STYLING THE PAGE -->
+    
+
+</head>
+<body class="bodyback">
+    <div class="container" id="searchbtn">
+        <input type="text" name="city" id='cities'>
+        <button class="searchbtnn" onclick="weatherBalloon(cities.value)">Search</button>
+
+    </div>
+    <br>
+    <center>
+        <div id="weather" class="colr2">
+        
+        <div id="description"></div>
+        <h1 id="temp"></h1>
+        <div id="location"></div>
+        
+        
+        
+        
+    </div>
+    <p class="colr" id="data"></p>
+    </center>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+
+<script type="text/javascript">
+    fetch('./data.json')
+    .then(function (response){
+        return response.json();
+    })
+    .then(function (data){
+        for(var i=0; i < data.length; i++){
+            document.getElementById("data").innerHTML += 
+            data[i].CityCode + "=>" + data[i].CityName + " " + data[i].Temp + " " + data[i].Status + "<br/>";
+
+        }
+    })
+    .catch(function (err){
+        console.log(err);
+    });
+
+</script>
+
+
+</html>
